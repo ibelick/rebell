@@ -1,0 +1,31 @@
+import LayoutDoc from "components/LayoutDoc";
+
+# Button
+
+### Basics
+
+Button in jsx
+
+```jsx button.js
+export function Button(props: ButtonProps) {
+  const { othersProp, ...rest } = props;
+  // do something with othersProp
+  return <button {...rest} />;
+}
+```
+
+Button in tsx
+
+```jsx button.tsx
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+  othersProp?: string;
+}
+
+export function Button(props: ButtonProps) {
+  const { othersProp, ...rest } = props;
+
+  return <button {...rest} />;
+}
+```
+
+export default ({ children }) => <LayoutDoc>{children}</LayoutDoc>;
