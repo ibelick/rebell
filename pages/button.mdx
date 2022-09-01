@@ -1,8 +1,10 @@
 import LayoutDoc from "components/LayoutDoc";
+import Button from "components/Button";
+import ComponentBlock from "components/ComponentBlock";
 
 # Button
 
-### Basics
+## Basics
 
 Button in jsx
 
@@ -17,15 +19,31 @@ export function Button(props: ButtonProps) {
 Button in tsx
 
 ```jsx button.tsx
+import { forwardRef } from "react";
+
 export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   othersProp?: string;
 }
 
-export function Button(props: ButtonProps) {
-  const { othersProp, ...rest } = props;
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (props: ButtonProps, ref) => {
+    const { othersProp, ...rest } = props;
 
-  return <button {...rest} />;
-}
+    return <button ref={ref} {...rest} />;
+  }
+);
+```
+
+## Styling
+
+<ComponentBlock componentName="Button">
+  
+<Button>PRIMARY</Button>
+
+</ComponentBlock>
+
+```jsx
+<Button>PRIMARY</Button>
 ```
 
 export default ({ children }) => <LayoutDoc>{children}</LayoutDoc>;
